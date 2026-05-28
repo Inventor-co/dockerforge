@@ -24,6 +24,8 @@ def run_cmd(cmd: list[str], cwd: Optional[Path] = None) -> BuildResult:
         stdout=subprocess.PIPE,
         stderr=subprocess.STDOUT,
         text=True,
+        encoding="utf-8",
+        errors="replace",
         shell=False,
     )
     return BuildResult(ok=proc.returncode == 0, output=proc.stdout)
